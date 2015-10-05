@@ -54,14 +54,16 @@ def queenSees(pos,size):
 
 def rookSees(pos,size):
 	inView=[]
+	#checks the horazontal for other rooks
 	for i in range(size):
 		setAppend(inView,(i,pos[1]))
 		setAppend(inView,(pos[0],i))
-	inView.remove(pos)
+	inView.remove(pos) # removes itself from list
 	return inView
 
 def knightSees(pos,size):
     inView = []
+	#all that needs to be done is put all the knight in one column so they cant take each other
     appendIfInBounds(inView, pointShift(pos, 2, 1), size)
     appendIfInBounds(inView, pointShift(pos, 2, -1), size)
     appendIfInBounds(inView, pointShift(pos, 1, 2), size)
@@ -89,21 +91,45 @@ def cloneBoard(b,size):
 	return c
 
 
-def fillBoardRecursion(board,row, size):
+def fillBoardRecursion(board,row,size,piece):
 	""" Given a board completed to given row, try all possible positions for next row and continue """
 	if row==size:
 		#Base case
 		return board
 	else:
 		for col in range(size):
-		#If we put a queen here, would it "see" another?
-			if not hasQueen(board,knightSees((row,col),size)):
-				b=cloneBoard(board,size)
-				b[row][col]=True
-				result= fillBoardRecursion(b,row+1,size)
-				if result!=False:
-					return result
+			if piece == "knight":
+				#If we put a queen here, would it "see" another?
+				if not hasQueen(board,knightSees((row,col),size)):
+					b=cloneBoard(board,size)
+					b[row][col]=True
+					result= fillBoardRecursion(b,row+1,size,piece)
+					if result!=False:
+						return result
+			elif piece == "queen":
+				if not hasQueen(board,queenSees((row,col),size)):
+					b=cloneBoard(board,size)
+					b[row][col]=True
+					result= fillBoardRecursion(b,row+1,size,piece)
+					if result!=False:
+						return result
+			elif piece == "rook":
+				if not hasQueen(board,rookSees((row,col),size)):
+					b=cloneBoard(board,size)
+					b[row][col]=True
+					result= fillBoardRecursion(b,row+1,size,piece)
+					if result!=False:
+						return result
 		return False #Failed at this point, so return False
-b=makeBoard(8)
-b=fillBoardRecursion(b,0,8)
-displayBoard(b)
+def start():
+	piece = raw_input ("Enter Piece: ")
+	if piece == "queen" or "rook" or "knight":
+		b=makeBoard(8)
+		b=fillBoardRecursion(b,0,8,piece)
+		displayBoard(b)
+	else:
+		start()
+start()
+start()
+start()
+
