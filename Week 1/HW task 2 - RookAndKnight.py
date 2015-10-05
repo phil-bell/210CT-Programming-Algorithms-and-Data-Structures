@@ -60,6 +60,11 @@ def rookSees(pos,size):
 	inView.remove(pos)
 	return inView
 
+def knightSees(pos,size):
+	inView=[]
+	for i in range(size):
+		
+
 def hasQueen(board, points):
 	""" Returns True if any of the given points on the given board contain a queen """
 	for p in points:
