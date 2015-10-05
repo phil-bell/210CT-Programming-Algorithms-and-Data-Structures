@@ -1,33 +1,16 @@
-def isSbString(a,b):
-	def strIncre(i,j,k,l):
-		print "i: ",i
-		print "j: ",j
-		print "k: ",k
-		print "l: ",l
-		print "\n \n"
-		if j==l:
-			print "Is not substring"
-		elif i==k and listA[i-1] == listB[j-1]:
-			print "Is substring"
-		elif listA[i] == listB[j]:
-			if j==l:
-				print "Is not substring"
-			else:
-				i += 1
-				j += 1
-				strIncre(i,j,k,l)
+def isSubString(userWord1,userWord2): 
+	if(len(userWord1) >= len(userWord2)):
+		userA = userWord2
+		userB = userWord1
+	else:
+		userA = userWord1
+		userB = userWord2
+	length = (len(userB) - len(userA))+1
+	for i in range(0,length):
+		if(userB[i:i + len(userA)] == userA):
+			print "Is a substring"
 		else:
-			j += 1
-			strIncre(i,j,k,l)
-	listA = list(a)
-	listB = list(b)
-	i = 0
-	j = 0
-	k = len(listA)
-	l = len(listB)
-	return strIncre(i,j,k,l)
-b = isSbString("cat","tybs")
-
-
-		
-
+			print "Is not a substring"
+usersWord1 = raw_input ("Word 1: ")
+usersWord2 = raw_input ("Word 2: ")
+isSubString(usersWord1,usersWord2)

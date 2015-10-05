@@ -61,8 +61,16 @@ def rookSees(pos,size):
 	return inView
 
 def knightSees(pos,size):
-	inView=[]
-	for i in range(size):
+    inView = []
+    appendIfInBounds(inView, pointShift(pos, 2, 1), size)
+    appendIfInBounds(inView, pointShift(pos, 2, -1), size)
+    appendIfInBounds(inView, pointShift(pos, 1, 2), size)
+    appendIfInBounds(inView, pointShift(pos, 1, -2), size)
+    appendIfInBounds(inView, pointShift(pos, -1, 2), size)
+    appendIfInBounds(inView, pointShift(pos, -1, -2), size)
+    appendIfInBounds(inView, pointShift(pos, -2, 1), size)
+    appendIfInBounds(inView, pointShift(pos, -2, - 1), size)
+    return inView
 		
 
 def hasQueen(board, points):
@@ -89,7 +97,7 @@ def fillBoardRecursion(board,row, size):
 	else:
 		for col in range(size):
 		#If we put a queen here, would it "see" another?
-			if not hasQueen(board,rookSees((row,col),size)):
+			if not hasQueen(board,knightSees((row,col),size)):
 				b=cloneBoard(board,size)
 				b[row][col]=True
 				result= fillBoardRecursion(b,row+1,size)
