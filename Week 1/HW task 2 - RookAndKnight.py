@@ -50,7 +50,7 @@ def queenSees(pos,size):
 				appendIfInBounds(inView, pointShift(pos,r*i,c*i), size)
 	#Take out position of queen so she doesn't see herself...
 	inView.remove(pos)
-	return inView
+	return inView #outputs the list of queen positions 
 
 def rookSees(pos,size):
 	inView=[]
@@ -59,7 +59,7 @@ def rookSees(pos,size):
 		setAppend(inView,(i,pos[1]))
 		setAppend(inView,(pos[0],i))
 	inView.remove(pos) # removes itself from list
-	return inView
+	return inView #outputs the list of rook positions 
 
 def knightSees(pos,size):
     inView = []
@@ -72,8 +72,7 @@ def knightSees(pos,size):
     appendIfInBounds(inView, pointShift(pos, -1, -2), size)
     appendIfInBounds(inView, pointShift(pos, -2, 1), size)
     appendIfInBounds(inView, pointShift(pos, -2, - 1), size)
-    return inView
-		
+    return inView #outputs the list of knight positions 	
 
 def hasQueen(board, points):
 	""" Returns True if any of the given points on the given board contain a queen """
