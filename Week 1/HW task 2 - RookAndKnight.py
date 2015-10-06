@@ -62,17 +62,13 @@ def rookSees(pos,size):
 	return inView #outputs the list of rook positions 
 
 def knightSees(pos,size):
-    inView = []
-	#all that needs to be done is put all the knight in one column so they cant take each other
-    appendIfInBounds(inView, pointShift(pos, 2, 1), size)
-    appendIfInBounds(inView, pointShift(pos, 2, -1), size)
-    appendIfInBounds(inView, pointShift(pos, 1, 2), size)
-    appendIfInBounds(inView, pointShift(pos, 1, -2), size)
-    appendIfInBounds(inView, pointShift(pos, -1, 2), size)
-    appendIfInBounds(inView, pointShift(pos, -1, -2), size)
-    appendIfInBounds(inView, pointShift(pos, -2, 1), size)
-    appendIfInBounds(inView, pointShift(pos, -2, - 1), size)
-    return inView #outputs the list of knight positions 	
+	inView=[]
+		listA=[2,2,1,1,-1,-1,-2,-2]
+		listB=[1,-1,2,-2,2,-2,1,-1]
+		for i in range(size):
+			appendIfInBounds(inView, pointShift(pos,listA[i],listB[i]),size)
+			i += 2
+
 
 def hasQueen(board, points):
 	""" Returns True if any of the given points on the given board contain a queen """
@@ -120,6 +116,7 @@ def fillBoardRecursion(board,row,size,piece):
 					if result!=False:
 						return result
 		return False #Failed at this point, so return False
+<<<<<<< Updated upstream
 def start():
 	piece = raw_input ("Enter Piece: ")
 	if piece == "queen" or "rook" or "knight":
@@ -132,3 +129,9 @@ start()
 start()
 start()
 
+=======
+
+b=makeBoard(8)
+b=fillBoardRecursion(b,0,8)
+displayBoard(b)
+>>>>>>> Stashed changes
