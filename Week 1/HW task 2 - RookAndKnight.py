@@ -14,7 +14,6 @@ def displayBoard(b):
 		print "|"+"|".join({True:" X ",False:"   "}[i] for i in row)+"|"
 	print divider
 
-
 def setAppend(s,i):
 	""" Add i to s unless i is already in s """
 	if not i in s: s.append(i)
@@ -63,12 +62,12 @@ def rookSees(pos,size):
 
 def knightSees(pos,size):
 	inView=[]
-		listA=[2,2,1,1,-1,-1,-2,-2]
-		listB=[1,-1,2,-2,2,-2,1,-1]
-		for i in range(size):
-			appendIfInBounds(inView, pointShift(pos,listA[i],listB[i]),size)
-			i += 2
-
+	listA=[2,2,1,1,-1,-1,-2,-2]
+	listB=[1,-1,2,-2,2,-2,1,-1]
+	for i in range(size):
+		appendIfInBounds(inView, pointShift(pos,listA[i],listB[i]),size)
+		i += 2
+	return inView
 
 def hasQueen(board, points):
 	""" Returns True if any of the given points on the given board contain a queen """
@@ -84,8 +83,7 @@ def cloneBoard(b,size):
 		for j in range(size):
 			c[i][j]=b[i][j]
 	return c
-
-
+	
 def fillBoardRecursion(board,row,size,piece):
 	""" Given a board completed to given row, try all possible positions for next row and continue """
 	if row==size:
@@ -116,7 +114,21 @@ def fillBoardRecursion(board,row,size,piece):
 					if result!=False:
 						return result
 		return False #Failed at this point, so return False
-<<<<<<< Updated upstream
+
+print "Queen:"
+b=makeBoard(8)
+b=fillBoardRecursion(b,0,8,"queen")
+displayBoard(b)
+print "\n \nRook:"
+b=makeBoard(8)
+b=fillBoardRecursion(b,0,8,"rook")
+displayBoard(b)
+print  "\n \nKnigh:"
+b=makeBoard(8)
+b=fillBoardRecursion(b,0,8,"knight")
+displayBoard(b)
+
+"""
 def start():
 	piece = raw_input ("Enter Piece: ")
 	if piece == "queen" or "rook" or "knight":
@@ -128,10 +140,4 @@ def start():
 start()
 start()
 start()
-
-=======
-
-b=makeBoard(8)
-b=fillBoardRecursion(b,0,8)
-displayBoard(b)
->>>>>>> Stashed changes
+"""
