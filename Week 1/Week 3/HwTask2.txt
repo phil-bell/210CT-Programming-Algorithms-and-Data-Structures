@@ -1,0 +1,9 @@
+def harmonic(n) #recives what n which is what number in the harmonic sequence is wanted, it then retruns that value
+		harmTot=0
+		harmStart=1
+		for i in range(0,n) #loops through the for loop until the desired harmonic value is outputted
+			harmTot=harmStart+harmStart/2
+			harmStart = harmStart/2
+		return harmtot
+n=10
+harmonic(n)

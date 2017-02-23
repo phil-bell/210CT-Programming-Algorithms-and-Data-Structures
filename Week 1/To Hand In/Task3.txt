@@ -1,0 +1,23 @@
+#This function is a liniar search that goes through the array it is handed until it finds the item it is looking for
+LINEARSEARCH(listToSearch,item)
+	FOR i IN RANGE (0 TO (Length of listToSearch))
+		IF i > (length of listToSearch) #when it reachs the end of the array it retruns false because the item is not in the array
+			RETURN FALSE
+		ELSE IF listToSearch[i] = item #when the item is found by this line it retruns true
+			RETRUN True
+		ELSE
+			i = i + 1 #if the item is not found and it is not the end of the array it increments i and does the for loop again
+			
+#This function tries to find duplicates in the array it is handed		
+LISTDUP(listToSearch)
+	i=0
+	j=0
+	FOR i IN RANGE (0 TO (length of listToSearch)) Increment i
+		IF i = (length of listToSearch) #if i reaches the end of the list it is reset to the begining and j moves to the next item
+			j = j + 1
+			i = 0
+		ELSE IF j > lenth of listToSearch) #when j reaches the end of the list all the items have been compared so if nothing has been found it will return false
+			RETURN FALSE
+		ELSE IF listToSearch[i]=listToSearch[j] AND i != j #if position i and position j are the same then there is a duplicate so it returns true
+			RETURN True
+		

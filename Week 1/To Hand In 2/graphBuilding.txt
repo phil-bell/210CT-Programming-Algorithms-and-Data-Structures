@@ -1,0 +1,16 @@
+#This code uses adjacency list to created a unweighted graph
+listOfNodes ← []
+
+CLASS NODES()
+	#This function adds a node to the list of nodes
+	ADDNODE(nodeToAdd)
+		listOfNodes.append(nodeToAdd)
+		FOR i IN nodeToAdd
+			listOfNodes[i].append(length of listOfNodes)
+	
+	#This function adds a edge (connections to a new node) to a node
+	ADDEDGE(firstNode,secondNode)
+		listOfNodes[firstNode].append(secondNode)
+		listOfNodes[secondNode].append(firstNode)
+		
+		
