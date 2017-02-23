@@ -62,12 +62,14 @@ def rookSees(pos,size):
 
 def knightSees(pos,size):
 	inView=[]
+	#lists on positions of knights 
 	listA=[2,2,1,1,-1,-1,-2,-2]
 	listB=[1,-1,2,-2,2,-2,1,-1]
+	#loops through the list outputting knights to the inView list
 	for i in range(size):
 		appendIfInBounds(inView, pointShift(pos,listA[i],listB[i]),size)
 		i += 2
-	return inView
+	return inView #sends list to be outputted
 
 def hasQueen(board, points):
 	""" Returns True if any of the given points on the given board contain a queen """
@@ -115,29 +117,27 @@ def fillBoardRecursion(board,row,size,piece):
 						return result
 		return False #Failed at this point, so return False
 
+boardSize = 8
 print "Queen:"
-b=makeBoard(8)
-b=fillBoardRecursion(b,0,8,"queen")
+b=makeBoard(boardSize)
+b=fillBoardRecursion(b,0,boardSize,"queen")
 displayBoard(b)
 print "\n \nRook:"
-b=makeBoard(8)
-b=fillBoardRecursion(b,0,8,"rook")
+b=makeBoard(boardSize)
+b=fillBoardRecursion(b,0,boardSize,"rook")
 displayBoard(b)
 print  "\n \nKnigh:"
-b=makeBoard(8)
-b=fillBoardRecursion(b,0,8,"knight")
+b=makeBoard(boardSize)
+b=fillBoardRecursion(b,0,boardSize,"knight")
 displayBoard(b)
 
-"""
+""" #this allows user to what piece they want
 def start():
 	piece = raw_input ("Enter Piece: ")
 	if piece == "queen" or "rook" or "knight":
-		b=makeBoard(8)
-		b=fillBoardRecursion(b,0,8,piece)
+		b=makeBoard(boardSize)
+		b=fillBoardRecursion(b,0,boardSize,piece)
 		displayBoard(b)
 	else:
 		start()
-start()
-start()
-start()
 """

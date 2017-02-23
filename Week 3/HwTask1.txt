@@ -1,0 +1,44 @@
+arrayA=[]
+int l
+int u
+FUNCTION1(arrayA,l,u) #this functions tries to find and item in the array "arrayA" that is more the "L" and less than "U"
+	FOR i IN RANGE OF END OF arrayA #loops though for loop until
+		IF arrayA[i] > l #makes the bool "moreThenL" true if the item in the array is more then l if note makes it false
+			morethenL = true
+		ELSE
+			morethenL = false
+		IF arrayA[i] < u  #make the bool "lessThenL" true of the item in the array is less then u if note makes it false
+			lessthenU = true
+		ELSE
+			lessthenU = false
+	IF moreThenL =true AND lessThen = true #if both lessThenL and moreThenL is both true then the item in the array is more the L and less the U it retruns true if not return false
+		RETURN true
+	ELSE
+		RETURN false
+		
+FUNCTION1(arrayA,l,u)
+
+
+
+
+
+
+FUNCTION2(arrayA,l,u)
+	ORDER arrayA
+		FOR i IN RANGE OF END OF arrayA
+		IF arrayA[i] > l #makes the bool "moreThenL" true if the item in the array is more then l if note makes it false and removes it from the array
+			morethenL = true
+		ELSE
+			REMOVE arrayA[i] TO arrayA[0]
+			morethenL = false
+		IF arrayA[i] < u
+			lessthenU = true
+		ELSE
+			REMOVE arrayA[i] TO arrayA[-1] #make the bool "lessThenL" true of the item in the array is less then u if note makes it false and removes it from the array
+			lessthenU = false
+	IF moreThenL =true AND lessThen = true #if both lessThenL and moreThenL is both true then the item in the array is more the L and less the U it retruns true if not return false
+		RETURN true
+	ELSE
+		RETURN false
+
+FUNCTION2(arrayA,l,u)
